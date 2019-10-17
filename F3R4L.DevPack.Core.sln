@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F3R4L.DevPack.Core", "F3R4L.DevPack.Core\F3R4L.DevPack.Core.csproj", "{996463DF-C426-464F-888E-18F3737AFCDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F3R4M.DevPack.Api", "F3R4M.DevPack.Api\F3R4M.DevPack.Api.csproj", "{A04F9008-B00C-4AA9-BFD0-79B2D938E270}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{996463DF-C426-464F-888E-18F3737AFCDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{996463DF-C426-464F-888E-18F3737AFCDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{996463DF-C426-464F-888E-18F3737AFCDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{996463DF-C426-464F-888E-18F3737AFCDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A04F9008-B00C-4AA9-BFD0-79B2D938E270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A04F9008-B00C-4AA9-BFD0-79B2D938E270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A04F9008-B00C-4AA9-BFD0-79B2D938E270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A04F9008-B00C-4AA9-BFD0-79B2D938E270}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

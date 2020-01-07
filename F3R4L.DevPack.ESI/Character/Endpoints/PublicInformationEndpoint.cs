@@ -2,8 +2,8 @@
 
 namespace F3R4L.DevPack.ESI.Character.Endpoints
 {
-    public class PublicInformationEndpoint<ITypeBlank, CharacterPublicInformation> 
-        : ApiEndpoint<ITypeBlank, CharacterPublicInformation>
+    public class PublicInformationEndpoint
+        : ApiEndpoint<ITypeBlank, Models.Character>
     {
         private const string _endpointFormat 
             = "https://esi.evetech.net/latest/characters/{0}/?datasource=tranquility";

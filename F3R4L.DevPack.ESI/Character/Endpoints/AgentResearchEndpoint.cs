@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace F3R4L.DevPack.ESI.Character.Endpoints
 {
-    public class CorporationHistoryEndpoint
-        : ApiEndpoint<ITypeBlank, IEnumerable<CorporationHistoryItem>>
+    public class AgentResearchEndpoint
+        : ApiEndpoint<ITypeBlank, IEnumerable<AgentResearchItem>>
     {
         private const string _endpointFormat
-            = "https://esi.evetech.net/latest/characters/{0}/corporationhistory/?datasource=tranquility";
+            = "https://esi.evetech.net/latest/characters/{0}/agents_research/?datasource=tranquility";
 
-        public CorporationHistoryEndpoint(long characterId) 
+        public AgentResearchEndpoint(long characterId)
             : base(string.Format(_endpointFormat, characterId))
         {
         }

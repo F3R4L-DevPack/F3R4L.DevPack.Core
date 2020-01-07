@@ -17,15 +17,12 @@ namespace F3R4L.DevPack.Api.Tests.Services
     public class ApiServiceTests
     {
         private ApiService _apiService;
-        private Fixture _fixture;
 
         [TestInitialize]
         public void Initialise()
         {
             _apiService = new ApiService(new HttpClientGenerationFactory(),
                 new JsonSerialisationWrapper());
-
-            _fixture = new Fixture();
         }
 
         [TestMethod]
@@ -34,25 +31,18 @@ namespace F3R4L.DevPack.Api.Tests.Services
             //  Arrange
 
             //  Act
-            var result = await _apiService.GetAsync(
-                new ApiEndpoint<ITypeBlank, object>("https://esi.evetech.net/latest/status/?datasource=tranquility"));
+            var result = await _apiService.GetAsync(new TestApiEndpoint());
 
             //  Assert
             //var content = result.Content.ToString();
         }
+    }
 
-        [TestMethod]
-        public async Task BasicPostTest()
+    public class TestApiEndpoint : ApiEndpoint<ITypeBlank, object>
+    {
+        public TestApiEndpoint()
+            : base("https://esi.evetech.net/latest/status/?datasource=tranquility")
         {
-            //  Arrange
-            var postData = _fixture.Create<LogDataModel>();
-
-            //  Act
-            await _apiService.PostAsync(
-                new ApiEndpoint<LogDataModel, ITypeBlank>("http://localhost:12958/api/notify"), postData);
-
-            //  Assert
-            //var content = result.Content.ToString();
         }
     }
 }

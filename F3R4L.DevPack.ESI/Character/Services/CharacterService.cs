@@ -4,6 +4,7 @@ using F3R4L.DevPack.ESI.Character.Endpoints;
 using F3R4L.DevPack.ESI.Character.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,31 +20,61 @@ namespace F3R4L.DevPack.ESI.Character.Services
         }
 
         /// <summary>
-        /// /characters/{character_id}/
+        /// GET: /characters/{character_id}/
         /// </summary>
-        /// <param name="id">Character Id</param>
+        /// <param name="characterId">Character Id</param>
         /// <returns>Models.Character</returns>
-        public async Task<Models.Character> GetCharacterAsync (long id)
+        public async Task<Models.Character> GetCharacterAsync (long characterId)
         {
             var result = await _apiService.GetAsync(
-                new PublicInformationEndpoint<ITypeBlank, Models.Character>(id));
-            result.Id = id;
+                new PublicInformationEndpoint(characterId));
+            result.Id = characterId;
             return result;
         }
 
         /// <summary>
-        /// /characters/{character_id}/corporationhistory/
+        /// GET: /characters/{0}/agents_research/
+        /// </summary>
+        /// <param name="characterId">Character Id</param>
+        /// <returns>AgentResearch</returns>
+        public async Task<AgentResearch> GetAgentResearch(long characterId)
+        {
+            return new AgentResearch
+            {
+                CharacterId = characterId,
+                ResearchItems = await _apiService.GetAsync(
+                    new AgentResearchEndpoint(characterId)
+                    )
+            };
+        }
+
+        /// <summary>
+        /// GET: /characters/{character_id}/corporationhistory/
         /// </summary>
         /// <param name="id">Character Id</param>
         /// <returns>Models.CorporationHistory</returns>
-        public async Task<CorporationHistory> GetCorporationHistoryAsync(long id)
+        public async Task<CorporationHistory> GetCorporationHistoryAsync(long characterId)
         {
-            return new CorporationHistory()
+            return new CorporationHistory
             {
-                CharacterId = id,
+                CharacterId = characterId,
                 CorporationHistoryItems = await _apiService.GetAsync(
-                    new CorporationHistoryEndpoint<ITypeBlank, IEnumerable<CorporationHistoryItem>>(id)
+                    new CorporationHistoryEndpoint(characterId)
                     )
+            };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="characterId"></param>
+        /// <returns></returns>
+        public async Task<Affiliations> GetAffiliationsAsync(IEnumerable<long> characterIds)
+        {
+            return new Affiliations
+            {
+                CharacterAffiliations = await _apiService.PostAsync(new AffiliationEndpoint(),
+                    characterIds)
             };
         }
     }

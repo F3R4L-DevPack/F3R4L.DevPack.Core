@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using System.Linq;
+using F3R4L.DevPack.ESI.Character.Models;
 
 namespace F3R4L.DevPack.ESI.Tests.Character
 {
@@ -50,6 +51,26 @@ namespace F3R4L.DevPack.ESI.Tests.Character
             result.CorporationHistoryItems.ToList().Last()
                 .CorporationId
                 .Should().Be(1000168);
+        }
+
+        [TestMethod]
+        public async Task GetAffiliations()
+        {
+            //  Arrange
+            var characterIds = new long[] { 93902200 };
+
+            //  Act
+            var results = await _objectUnderTest.GetAffiliationsAsync(characterIds);
+
+            //  Assert
+            results.CharacterAffiliations.Count().Should().Be(1);
+            results.CharacterAffiliations.First().Should().BeEquivalentTo(
+                new AffiliationItem
+                {
+                    AllianceId = 99005393,
+                    CharacterId = 93902200,
+                    CorporationId = 98518643
+                });
         }
     }
 }

@@ -13,14 +13,5 @@ namespace F3R4L.DevPack.Api.Endpoints
         {
             Endpoint = endpoint;
         }
-
-        public Type GetInputType()
-        {
-            return typeof(TIn);
-        }
-        public Type GetOutputType()
-        {
-            return typeof(TOut);
-        }
     }
 }

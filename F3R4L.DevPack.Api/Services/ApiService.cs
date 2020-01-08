@@ -3,6 +3,7 @@ using F3R4L.DevPack.Api.Wrappers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace F3R4L.DevPack.Api.Services
 {
@@ -12,6 +13,14 @@ namespace F3R4L.DevPack.Api.Services
         private readonly IJsonSerialisationWrapper _serialiser;
 
         private readonly HttpClient _httpClient;
+
+        public HttpRequestHeaders Headers
+        {
+            get
+            {
+                return _httpClient.DefaultRequestHeaders;
+            }
+        }
 
         public ApiService(IHttpClientGenerationFactory httpClientGenerationFactory, IJsonSerialisationWrapper serialiser)
         {
@@ -23,9 +32,9 @@ namespace F3R4L.DevPack.Api.Services
 
         public void SetHeaders(Dictionary<string, string> headers)
         {
-            _httpClient.DefaultRequestHeaders.Clear();
+            Headers.Clear();
             headers.ToList().ForEach(header 
-                => _httpClient.DefaultRequestHeaders.Add(header.Key, header.Value));
+                => Headers.Add(header.Key, header.Value));
         }
     }
 }

@@ -2,6 +2,7 @@
 using F3R4L.DevPack.Api.Services;
 using F3R4L.DevPack.ESI.Character.Endpoints;
 using F3R4L.DevPack.ESI.Character.Models;
+using F3R4L.DevPack.ESI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,11 @@ using System.Threading.Tasks;
 
 namespace F3R4L.DevPack.ESI.Character.Services
 {
-    public class CharacterService
+    public class CharacterService : ESIBaseService
     {
-        private readonly IApiService _apiService;
-
         public CharacterService(IApiService apiService)
+            : base(apiService)
         {
-            _apiService = apiService;
         }
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
         }
 
         /// <summary>
-        /// GET: /characters/{0}/agents_research/
+        /// GET: /characters/{character_id}/agents_research/
         /// </summary>
         /// <param name="characterId">Character Id</param>
         /// <returns>AgentResearch</returns>
@@ -44,6 +43,22 @@ namespace F3R4L.DevPack.ESI.Character.Services
                 CharacterId = characterId,
                 ResearchItems = await _apiService.GetAsync(
                     new AgentResearchEndpoint(characterId)
+                    )
+            };
+        }
+
+        /// <summary>
+        /// GET: /characters/{character_id}/blueprints/
+        /// </summary>
+        /// <param name="characterId">Character Id</param>
+        /// <returns>BlueprintCollection</returns>
+        public async Task<BlueprintCollection> GetBlueprints(long characterId)
+        {
+            return new BlueprintCollection
+            {
+                OwnerId = characterId,
+                BlueprintsOwned = await _apiService.GetAsync(
+                    new BlueprintsEndpoint(characterId)
                     )
             };
         }
@@ -64,11 +79,16 @@ namespace F3R4L.DevPack.ESI.Character.Services
             };
         }
 
+        public async Task<long> GetCSPACharge(long characterId, IEnumerable<long> recipientIds)
+        {
+            return await _apiService.PostAsync();
+        }
+
         /// <summary>
-        /// 
+        /// POST: /characters/affiliation/
         /// </summary>
-        /// <param name="characterId"></param>
-        /// <returns></returns>
+        /// <param name="characterIds">IEnumerable<long></param>
+        /// <returns>Affiliations</returns>
         public async Task<Affiliations> GetAffiliationsAsync(IEnumerable<long> characterIds)
         {
             return new Affiliations

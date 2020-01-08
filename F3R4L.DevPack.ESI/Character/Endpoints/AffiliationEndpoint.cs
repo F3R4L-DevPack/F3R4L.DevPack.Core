@@ -1,5 +1,6 @@
 ﻿using F3R4L.DevPack.Api.Endpoints;
 using F3R4L.DevPack.ESI.Character.Models;
+using F3R4L.DevPack.ESI.Constants;
 using System.Collections.Generic;
 
 namespace F3R4L.DevPack.ESI.Character.Endpoints
@@ -8,10 +9,10 @@ namespace F3R4L.DevPack.ESI.Character.Endpoints
         : ApiEndpoint<IEnumerable<long>, IEnumerable<AffiliationItem>>
     {
         private const string _endpoint
-            = "https://esi.evetech.net/latest/characters/affiliation/?datasource=tranquility";
+            = "/characters/affiliation/?datasource=tranquility";
 
-        public AffiliationEndpoint() 
-            : base(_endpoint)
+        public AffiliationEndpoint()
+            : base(string.Concat(StringConstants._esiBaseUrl, _endpoint))
         {
         }
     }

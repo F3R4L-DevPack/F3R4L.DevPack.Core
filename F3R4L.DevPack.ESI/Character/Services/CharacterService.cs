@@ -79,9 +79,27 @@ namespace F3R4L.DevPack.ESI.Character.Services
             };
         }
 
+        /// <summary>
+        /// POST: /characters/{character_id}/cspa/
+        /// </summary>
+        /// <param name="characterId">Character Ids</param>
+        /// <param name="recipientIds">Ids of all the characters to be included in the calculation</param>
+        /// <returns>long</returns>
         public async Task<long> GetCSPACharge(long characterId, IEnumerable<long> recipientIds)
         {
-            return await _apiService.PostAsync();
+            return await _apiService.PostAsync(new CspaChargeEndpoint(characterId), recipientIds);
+        }
+
+        /// <summary>
+        /// GET: /characters/{character_Id}/fatigue/
+        /// </summary>
+        /// <param name="characterId">Character Ids</param>
+        /// <returns>JumpInformation</returns>
+        public async Task<JumpInformation> GetJumpInformation(long characterId)
+        {
+            var result = await _apiService.GetAsync(new JumpFatigueEndpoint(characterId));
+            result.CharacterId = characterId;
+            return result;
         }
 
         /// <summary>

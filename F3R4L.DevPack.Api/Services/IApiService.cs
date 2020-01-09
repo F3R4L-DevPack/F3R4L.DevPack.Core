@@ -13,6 +13,10 @@ namespace F3R4L.DevPack.Api.Services
         Task<TOut> GetAsync<TOut>(IApiEndpoint<ITypeBlank, TOut> apiEndpoint);
         Task<TOut> PostAsync<TIn, TOut>(IApiEndpoint<TIn, TOut> endpoint, TIn postData);
         Task PostAsync<TIn>(IApiEndpoint<TIn, ITypeBlank> endpoint, TIn postData);
+        Task<TOut> PostAsync<TIn1, TIn2, TOut>(IApiEndpoint<TIn1, TIn2, TOut> endpoint,
+            TIn1 urlParameter,
+            TIn2 postData);
+
         void SetHeaders(Dictionary<string, string> headers);
     }
 }

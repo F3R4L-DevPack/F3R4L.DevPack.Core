@@ -21,5 +21,16 @@ namespace F3R4L.DevPack.Api.Services
                 );
             return _serialiser.Deserialise<TOut>(await result.Content.ReadAsStringAsync());
         }
+
+        public async Task<TOut> PostAsync<TIn1, TIn2, TOut>(IApiEndpoint<TIn1, TIn2, TOut> endpoint, 
+            TIn1 urlParameter,
+            TIn2 postData)
+        {
+            var reqUri = string.Format(endpoint.Endpoint, _serialiser.Serialise<TIn1>(urlParameter));
+            var result = await _httpClient.PostAsync(reqUri,
+                new StringContent(_serialiser.Serialise<TIn2>(postData), Encoding.UTF8, "application/json")
+                );
+            return _serialiser.Deserialise<TOut>(await result.Content.ReadAsStringAsync());
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace F3R4L.DevPack.Api.Services
         public async Task<TOut> GetAsync<TIn, TOut>(IApiEndpoint<TIn, TOut> apiEndpoint, TIn request)
         {
             var reqUri = string.Format(apiEndpoint.Endpoint, _serialiser.Serialise<TIn>(request));
-            var result = await _httpClient.GetAsync(apiEndpoint.Endpoint);
+            var result = await _httpClient.GetAsync(reqUri);
             return _serialiser.Deserialise<TOut>(await result.Content.ReadAsStringAsync());
         }
     }

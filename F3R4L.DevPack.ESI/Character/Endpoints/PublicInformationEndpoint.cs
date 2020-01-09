@@ -1,17 +1,15 @@
-﻿using F3R4L.DevPack.Api.Endpoints;
-using F3R4L.DevPack.ESI.Constants;
+﻿using F3R4L.DevPack.ESI.Shared;
 
 namespace F3R4L.DevPack.ESI.Character.Endpoints
 {
     public class PublicInformationEndpoint
-        : ApiEndpoint<ITypeBlank, Models.Character>
+        : ESIBaseEndpoint<long, Models.Character>
     {
         private const string _endpointFormat 
-            = "/latest/characters/{0}/?datasource=tranquility";
+            = "/characters/{0}/?datasource=tranquility";
 
-        public PublicInformationEndpoint(long characterId)
-            : base(string.Concat(StringConstants._esiBaseUrl,
-                string.Concat(StringConstants._esiBaseUrl, string.Format(_endpointFormat, characterId))))
+        public PublicInformationEndpoint()
+            : base(_endpointFormat)
         {
         }
     }

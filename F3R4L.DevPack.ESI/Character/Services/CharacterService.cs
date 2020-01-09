@@ -26,7 +26,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
         public async Task<Models.Character> GetCharacterAsync (long characterId)
         {
             var result = await _apiService.GetAsync(
-                new PublicInformationEndpoint(characterId));
+                new PublicInformationEndpoint(), characterId);
             result.Id = characterId;
             return result;
         }
@@ -42,7 +42,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
             {
                 CharacterId = characterId,
                 ResearchItems = await _apiService.GetAsync(
-                    new AgentResearchEndpoint(characterId)
+                    new AgentResearchEndpoint(), characterId
                     )
             };
         }
@@ -58,7 +58,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
             {
                 OwnerId = characterId,
                 BlueprintsOwned = await _apiService.GetAsync(
-                    new BlueprintsEndpoint(characterId)
+                    new BlueprintsEndpoint(), characterId
                     )
             };
         }
@@ -74,7 +74,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
             {
                 CharacterId = characterId,
                 CorporationHistoryItems = await _apiService.GetAsync(
-                    new CorporationHistoryEndpoint(characterId)
+                    new CorporationHistoryEndpoint(), characterId
                     )
             };
         }
@@ -87,7 +87,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
         /// <returns>long</returns>
         public async Task<long> GetCSPACharge(long characterId, IEnumerable<long> recipientIds)
         {
-            return await _apiService.PostAsync(new CspaChargeEndpoint(characterId), recipientIds);
+            return await _apiService.PostAsync(new CspaChargeEndpoint(), characterId, recipientIds);
         }
 
         /// <summary>
@@ -97,9 +97,23 @@ namespace F3R4L.DevPack.ESI.Character.Services
         /// <returns>JumpInformation</returns>
         public async Task<JumpInformation> GetJumpInformation(long characterId)
         {
-            var result = await _apiService.GetAsync(new JumpFatigueEndpoint(characterId));
+            var result = await _apiService.GetAsync(new JumpFatigueEndpoint(), characterId);
             result.CharacterId = characterId;
             return result;
+        }
+
+        /// <summary>
+        /// GET: /characters/{character_id}/medals/
+        /// </summary>
+        /// <param name="characterId"Character Id</param>
+        /// <returns>MedalCollection</returns>
+        public async Task<MedalCollection> GetMedals(long characterId)
+        {
+            return new MedalCollection
+            {
+                CharacterId = characterId,
+                Medals = await _apiService.GetAsync(new MedalsEndpoint(), characterId)
+            };
         }
 
         /// <summary>

@@ -36,7 +36,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
         /// </summary>
         /// <param name="characterId">Character Id</param>
         /// <returns>AgentResearch</returns>
-        public async Task<AgentResearch> GetAgentResearch(long characterId)
+        public async Task<AgentResearch> GetAgentResearchAsync(long characterId)
         {
             return new AgentResearch
             {
@@ -52,7 +52,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
         /// </summary>
         /// <param name="characterId">Character Id</param>
         /// <returns>BlueprintCollection</returns>
-        public async Task<BlueprintCollection> GetBlueprints(long characterId)
+        public async Task<BlueprintCollection> GetBlueprintsAsync(long characterId)
         {
             return new BlueprintCollection
             {
@@ -85,7 +85,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
         /// <param name="characterId">Character Ids</param>
         /// <param name="recipientIds">Ids of all the characters to be included in the calculation</param>
         /// <returns>long</returns>
-        public async Task<long> GetCSPACharge(long characterId, IEnumerable<long> recipientIds)
+        public async Task<long> GetCSPAChargeAsync(long characterId, IEnumerable<long> recipientIds)
         {
             return await _apiService.PostAsync(new CspaChargeEndpoint(), characterId, recipientIds);
         }
@@ -95,7 +95,7 @@ namespace F3R4L.DevPack.ESI.Character.Services
         /// </summary>
         /// <param name="characterId">Character Ids</param>
         /// <returns>JumpInformation</returns>
-        public async Task<JumpInformation> GetJumpInformation(long characterId)
+        public async Task<JumpInformation> GetJumpInformationAsync(long characterId)
         {
             var result = await _apiService.GetAsync(new JumpFatigueEndpoint(), characterId);
             result.CharacterId = characterId;
@@ -107,12 +107,40 @@ namespace F3R4L.DevPack.ESI.Character.Services
         /// </summary>
         /// <param name="characterId"Character Id</param>
         /// <returns>MedalCollection</returns>
-        public async Task<MedalCollection> GetMedals(long characterId)
+        public async Task<MedalCollection> GetMedalsAsync(long characterId)
         {
             return new MedalCollection
             {
                 CharacterId = characterId,
                 Medals = await _apiService.GetAsync(new MedalsEndpoint(), characterId)
+            };
+        }
+
+        /// <summary>
+        /// GET: /characters/{character_Id}/notifications/
+        /// </summary>
+        /// <param name="characterId">Character Id</param>
+        /// <returns>NotificationCollection</returns>
+        public async Task<NotificationCollection> GetNotificationsAsync(long characterId)
+        {
+            return new NotificationCollection
+            {
+                CharacterId = characterId,
+                Notifications = await _apiService.GetAsync(new NotificationEndpoint(), characterId)
+            };
+        }
+
+        /// <summary>
+        /// GET: /characters/{character_id}/notifications/contacts/
+        /// </summary>
+        /// <param name="characterId">Character Id</param>
+        /// <returns>ContactNotificationCollection</returns>
+        public async Task<ContactNotificationCollection> GetContactListNotificationsAsync(long characterId)
+        {
+            return new ContactNotificationCollection
+            {
+                CharacterId = characterId,
+                Notifications = await _apiService.GetAsync(new ContactNotificationEndpoint(), characterId)
             };
         }
 

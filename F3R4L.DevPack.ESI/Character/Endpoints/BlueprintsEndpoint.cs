@@ -7,7 +7,7 @@ namespace F3R4L.DevPack.ESI.Character.Endpoints
     public class BlueprintsEndpoint
         : ApiEndpoint<long, IEnumerable<Blueprint>>
     {
-        private const string _endpointFormat = "/characters/{character_id}/blueprints/";
+        private const string _endpointFormat = "/characters/{0}/blueprints/";
 
         public BlueprintsEndpoint()
             : base(_endpointFormat)

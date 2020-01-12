@@ -145,6 +145,46 @@ namespace F3R4L.DevPack.ESI.Character.Services
         }
 
         /// <summary>
+        /// GET: /characters/{character_id}/portrait/
+        /// </summary>
+        /// <param name="characterId">Character Id</param>
+        /// <returns>PortraitInformation</returns>
+        public async Task<PortraitInformation> GetPortraitAsync(long characterId)
+        {
+            var result = await _apiService.GetAsync(new PortraitEndpoint(), characterId);
+            result.CharacterId = characterId;
+
+            return result;
+        }
+
+        /// <summary>
+        /// GET: /characters/{character_id}/roles/
+        /// </summary>
+        /// <param name="characterId">Character Id</param>
+        /// <returns>CorporationRolesCollection</returns>
+        public async Task<CorporationRolesCollection> GetCorporationRolesAsync(long characterId)
+        {
+            var result = await _apiService.GetAsync(new CorporationRolesEndpoint(), characterId);
+            result.CharacterId = characterId;
+
+            return result;
+        }
+
+        /// <summary>
+        /// GET: /characters/{character_id}/standings/
+        /// </summary>
+        /// <param name="characterId">Character Id</param>
+        /// <returns>StandingCollection</returns>
+        public async Task<StandingCollection> GetStandingsAsync(long characterId)
+        {
+            return new StandingCollection
+            {
+                CharacterId = characterId,
+                Standings = await _apiService.GetAsync(new StandingsEndpoint(), characterId)
+            };
+        }
+
+        /// <summary>
         /// POST: /characters/affiliation/
         /// </summary>
         /// <param name="characterIds">IEnumerable<long></param>

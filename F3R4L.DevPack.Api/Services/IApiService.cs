@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using F3R4L.DevPack.Api.Endpoints;
@@ -16,6 +17,8 @@ namespace F3R4L.DevPack.Api.Services
         Task<TOut> PostAsync<TIn1, TIn2, TOut>(IApiEndpoint<TIn1, TIn2, TOut> endpoint,
             TIn1 urlParameter,
             TIn2 postData);
+        Task<TOut> SendAsync<TOut>(IApiEndpoint<HttpRequestMessage, TOut> apiEndpoint,
+            HttpRequestMessage request);
 
         void SetHeaders(Dictionary<string, string> headers);
     }

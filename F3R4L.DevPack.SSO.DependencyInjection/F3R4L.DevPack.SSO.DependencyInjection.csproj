@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Description>For use with Dependency Injection in .Net Code projects</Description>
+    <PackageLicenseFile>Licence.txt</PackageLicenseFile>
+    <Copyright>2020 - White Fang Militia - Clyde en Marland / Chris Fithian-Franks</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\F3R4L.DevPack.SSO\F3R4L.DevPack.SSO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Licence.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

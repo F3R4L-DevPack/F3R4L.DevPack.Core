@@ -26,7 +26,7 @@ namespace F3R4L.DevPack.SSO.Web
             return requestUri.Query.Split(new string[] { "=" }, StringSplitOptions.None).Last();
         }
 
-        public async Task<TokenResponse> GetTokensAsync(string clientId, string applicationKey, string token, string tokenRefreshUrl, string hostName)
+        public async Task<TokenResponse> GetTokensFromRefreshTokenAsync(string clientId, string applicationKey, string token, string tokenRefreshUrl, string hostName)
         {
             var encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Concat(clientId, ":", applicationKey)));
 

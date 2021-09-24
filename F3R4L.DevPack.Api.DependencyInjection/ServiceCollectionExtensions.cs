@@ -9,7 +9,7 @@ namespace F3R4L.DevPack.Api.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddF3R4IApiBindings(this IServiceCollection serviceCollection)
+        public static void AddF3R4LApiBindings(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped(typeof(IHttpContextAccessor), typeof(HttpContextAccessor));
             serviceCollection.AddScoped(typeof(IHttpClientGenerationFactory), typeof(HttpClientGenerationFactory));

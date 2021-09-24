@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Licence.txt = Licence.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F3R4L.DevPack.SSO.Ninject", "F3R4L.DevPack.SSO.Ninject\F3R4L.DevPack.SSO.Ninject.csproj", "{1B1E5F78-B345-4FED-A708-9F08E0BC5F7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F3R4L.DevPack.SSO.DependencyInjection", "F3R4L.DevPack.SSO.DependencyInjection\F3R4L.DevPack.SSO.DependencyInjection.csproj", "{442CB244-96D7-4AA6-B760-5D254C520734}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{A21DF749-D2AB-4555-B380-09AEAAD1CD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A21DF749-D2AB-4555-B380-09AEAAD1CD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A21DF749-D2AB-4555-B380-09AEAAD1CD9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B1E5F78-B345-4FED-A708-9F08E0BC5F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B1E5F78-B345-4FED-A708-9F08E0BC5F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B1E5F78-B345-4FED-A708-9F08E0BC5F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B1E5F78-B345-4FED-A708-9F08E0BC5F7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{442CB244-96D7-4AA6-B760-5D254C520734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442CB244-96D7-4AA6-B760-5D254C520734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442CB244-96D7-4AA6-B760-5D254C520734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442CB244-96D7-4AA6-B760-5D254C520734}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

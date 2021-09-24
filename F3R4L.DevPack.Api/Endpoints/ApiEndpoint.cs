@@ -13,6 +13,12 @@ namespace F3R4L.DevPack.Api.Endpoints
         {
             Endpoint = endpoint;
         }
+
+        public string AddParameters(object[] args)
+        {
+            Endpoint = string.Format(Endpoint, args);
+            return Endpoint;
+        }
     }
 
     public abstract class ApiEndpoint<TIn1, TIn2, TOut> : IApiEndpoint<TIn1, TIn2, TOut>
@@ -25,6 +31,11 @@ namespace F3R4L.DevPack.Api.Endpoints
         public ApiEndpoint(string endpoint)
         {
             Endpoint = endpoint;
+        }
+
+        public string AddParameters(object[] args)
+        {
+            return string.Format(Endpoint, args);
         }
     }
 }

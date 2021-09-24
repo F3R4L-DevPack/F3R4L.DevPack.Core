@@ -1,5 +1,6 @@
 ﻿using F3R4L.DevPack.Api.Factories;
 using F3R4L.DevPack.Api.Wrappers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -35,6 +36,14 @@ namespace F3R4L.DevPack.Api.Services
             Headers.Clear();
             headers.ToList().ForEach(header 
                 => Headers.Add(header.Key, header.Value));
+        }
+
+        private bool IsSimple(Type type)
+        {
+            return type.IsPrimitive
+              || type.IsEnum
+              || type.Equals(typeof(string))
+              || type.Equals(typeof(decimal));
         }
     }
 }

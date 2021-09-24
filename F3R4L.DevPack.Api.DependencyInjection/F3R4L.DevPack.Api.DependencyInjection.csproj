@@ -2,22 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Description>Basic (and hopefully simple to use) SSO functionality</Description>
+    <Description>For use with Dependency Injection in .Net Code projects</Description>
     <Copyright>2020 - White Fang Militia - Clyde en Marland / Chris Fithian-Franks</Copyright>
     <PackageLicenseFile>Licence.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\F3R4L.DevPack.Api\F3R4L.DevPack.Api.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DI\" />
   </ItemGroup>
 
   <ItemGroup>

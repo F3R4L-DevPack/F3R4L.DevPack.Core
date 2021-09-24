@@ -4,9 +4,8 @@ using Microsoft.Extensions.Http;
 using Microsoft.Extensions.Options;
 using Ninject.Modules;
 using Ninject.Web.Common;
-using System.Net.Http;
 
-namespace F3R4L.DevPack.Api.Modules
+namespace F3R4L.DevPack.Api.Ninject
 {
     public class HttpModule : NinjectModule
     {

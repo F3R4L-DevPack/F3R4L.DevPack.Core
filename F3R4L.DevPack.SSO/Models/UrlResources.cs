@@ -8,7 +8,7 @@
 
         internal const string Authorise = "authorize";
 
-        internal const string AuthorisationUrlFormat = "https://login.eveonline.com/oauth/{0}";
+        //internal const string AuthorisationUrlFormat = "https://login.eveonline.com/oauth/{0}";
 
         internal const string ResponseTypeModifier = "response_type=code";
         internal const string RedirectURIFormat = "redirect_uri={0}";

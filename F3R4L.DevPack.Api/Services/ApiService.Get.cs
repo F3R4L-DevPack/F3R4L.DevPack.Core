@@ -1,4 +1,5 @@
 ﻿using F3R4L.DevPack.Api.Endpoints;
+using System;
 using System.Threading.Tasks;
 
 namespace F3R4L.DevPack.Api.Services
@@ -13,8 +14,12 @@ namespace F3R4L.DevPack.Api.Services
 
         public async Task<TOut> GetAsync<TIn, TOut>(IApiEndpoint<TIn, TOut> apiEndpoint, TIn request)
         {
-            var reqUri = string.Format(apiEndpoint.Endpoint, _serialiser.Serialise<TIn>(request));
-            var result = await _httpClient.GetAsync(reqUri);
+            if (!IsSimple(typeof(TIn)))
+            {
+                throw new NotImplementedException("This method does not currently handle complex objects.");
+            }
+
+            var result = await _httpClient.GetAsync(apiEndpoint.AddParameters(new object[] { request }));
             return _serialiser.Deserialise<TOut>(await result.Content.ReadAsStringAsync());
         }
     }

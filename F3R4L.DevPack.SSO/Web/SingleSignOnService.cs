@@ -30,7 +30,7 @@ namespace F3R4L.DevPack.SSO.Web
         {
             var encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Concat(clientId, ":", applicationKey)));
 
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             var requestMessage = new HttpRequestMessage()
             {

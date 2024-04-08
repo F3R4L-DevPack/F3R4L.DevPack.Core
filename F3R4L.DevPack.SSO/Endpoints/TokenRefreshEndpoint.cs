@@ -4,10 +4,10 @@ using System.Net.Http;
 
 namespace F3R4L.DevPack.SSO.Endpoints
 {
-    public class TokenRefreshEndpoint : ApiEndpoint<HttpRequestMessage, TokenResponse>
-    {
-        public TokenRefreshEndpoint(string endpoint) : base(endpoint)
-        {
-        }
-    }
+    //public class TokenRefreshEndpoint : ApiEndpoint<HttpRequestMessage, TokenResponse>
+    //{
+    //    public TokenRefreshEndpoint(string endpoint) : base(endpoint)
+    //    {
+    //    }
+    //}
 }

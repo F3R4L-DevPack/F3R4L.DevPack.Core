@@ -1,41 +1,51 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace F3R4L.DevPack.Api.Endpoints
 {
-    public abstract class ApiEndpoint<TIn, TOut> : IApiEndpoint<TIn, TOut>
+    public abstract class ApiEndpoint
     {
-        /// <summary>
-        /// Endpoint MUST include full formatting for a request
-        /// </summary>
+        public string HostName { get; private set; }
         public string Endpoint { get; private set; }
+        public HttpMethod HttpMethod { get; private set; }
 
-        public ApiEndpoint(string endpoint)
+        public string Address
         {
-            Endpoint = endpoint;
+            get
+            {
+                return string.Concat(HostName, Endpoint);
+            }
         }
 
-        public string AddParameters(object[] args)
+        protected ApiEndpoint(string hostName, string endpoint, HttpMethod httpMethod)
         {
-            Endpoint = string.Format(Endpoint, args);
-            return Endpoint;
+            HostName = hostName;
+            Endpoint = endpoint;
+            HttpMethod = httpMethod;
         }
     }
 
-    public abstract class ApiEndpoint<TIn1, TIn2, TOut> : IApiEndpoint<TIn1, TIn2, TOut>
+    public abstract class ApiEndpoint<T> : ApiEndpoint
     {
-        /// <summary>
-        /// Endpoint MUST include full formatting for a request
-        /// </summary>
-        public string Endpoint { get; private set; }
-
-        public ApiEndpoint(string endpoint)
+        protected ApiEndpoint(string hostName, string endpoint, HttpMethod httpMethod)
+            : base(hostName, endpoint, httpMethod)
         {
-            Endpoint = endpoint;
         }
+    }
 
-        public string AddParameters(object[] args)
+    public abstract class ApiEndpoint<TIn, TOut> : ApiEndpoint
+    {
+        protected ApiEndpoint(string hostName, string endpoint, HttpMethod httpMethod)
+            : base(hostName, endpoint, httpMethod)
         {
-            return string.Format(Endpoint, args);
+        }
+    }
+
+    public abstract class ApiEndpoint<TIn1, TIn2, TOut> : ApiEndpoint
+    {
+        protected ApiEndpoint(string hostName, string endpoint, HttpMethod httpMethod)
+            : base(hostName, endpoint, httpMethod)
+        {
         }
     }
 }

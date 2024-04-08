@@ -7,9 +7,9 @@ namespace F3R4L.DevPack.Api.Services
 {
     public partial class ApiService
     {
-        public async Task PostAsync(PostEndpoint endpoint)
+        public async Task PatchAsync<TIn>(PatchEndpoint<TIn> endpoint)
         {
-            var result = await _httpClient.PostAsync(endpoint.Address, null);
+            var result = await _httpClient.PatchAsync(endpoint.Address, null);
             if (!result.IsSuccessStatusCode)
             {
                 throw CreateException(endpoint.Address, endpoint.HttpMethod.ToString(),
@@ -17,9 +17,9 @@ namespace F3R4L.DevPack.Api.Services
             }
         }
 
-        public async Task PostAsync<TIn>(PostEndpoint<TIn> endpoint, TIn request)
+        public async Task PatchAsync<TIn>(PatchEndpoint<TIn> endpoint, TIn request)
         {
-            var result = await _httpClient.PostAsync(endpoint.Address,
+            var result = await _httpClient.PatchAsync(endpoint.Address,
                 new StringContent(_jsonSerialiser.Serialise<TIn>(request), Encoding.UTF8, "application/json"));
             if (!result.IsSuccessStatusCode)
             {
@@ -28,10 +28,10 @@ namespace F3R4L.DevPack.Api.Services
             }
         }
 
-        public async Task<TOut> PostAsync<TIn, TOut>(PostEndpoint<TIn, TOut> endpoint, TIn requestObject)
+        public async Task<TOut> PatchAsync<TIn, TOut>(PatchEndpoint<TIn, TOut> endpoint, TIn requestObject)
             where TIn : class
         {
-            var result = await _httpClient.PostAsync(endpoint.Address,
+            var result = await _httpClient.PatchAsync(endpoint.Address,
                 new StringContent(_jsonSerialiser.Serialise<TIn>(requestObject), Encoding.UTF8, "application/json"));
             if (!result.IsSuccessStatusCode)
             {

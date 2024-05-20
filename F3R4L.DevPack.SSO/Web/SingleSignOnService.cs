@@ -28,22 +28,21 @@ namespace F3R4L.DevPack.SSO.Web
 
         public async Task<TokenResponse> GetTokensFromRefreshTokenAsync(string clientId, string applicationKey, string token, string tokenRefreshUrl, string hostName)
         {
-            //var encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Concat(clientId, ":", applicationKey)));
+            var encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Concat(clientId, ":", applicationKey)));
 
-            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            //var requestMessage = new HttpRequestMessage()
-            //{
-            //    RequestUri = new Uri(tokenRefreshUrl),
-            //    Method = HttpMethod.Post
-            //};
-            //requestMessage.Headers.Add("Authorization", string.Concat("Basic ", encoded));
-            //requestMessage.Headers.Add("host", hostName);
-            //requestMessage.Content = new StringContent(string.Concat("grant_type=authorization_code&code=", token));
-            //requestMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/x-www-form-urlencoded");
+            var requestMessage = new HttpRequestMessage()
+            {
+                RequestUri = new Uri(tokenRefreshUrl),
+                Method = HttpMethod.Post
+            };
+            requestMessage.Headers.Add("Authorization", string.Concat("Basic ", encoded));
+            requestMessage.Headers.Add("host", hostName);
+            requestMessage.Content = new StringContent(string.Concat("grant_type=authorization_code&code=", token));
+            requestMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/x-www-form-urlencoded");
 
-            //return await _apiService.SendAsync(new TokenRefreshEndpoint(tokenRefreshUrl), requestMessage);
-            throw new NotImplementedException();
+            return await _apiService.SendAsync<TokenResponse>(requestMessage);
         }
 
         public string SignOnRedirectUrl(string redirectURI, string clientId, IEnumerable<string> scopes, string urlFormat)

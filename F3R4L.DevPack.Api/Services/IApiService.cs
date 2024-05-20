@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using F3R4L.DevPack.Api.Endpoints;
@@ -31,5 +32,6 @@ namespace F3R4L.DevPack.Api.Services
         Task PatchAsync<TIn>(PatchEndpoint<TIn> endpoint, TIn request);
         Task<TOut> PatchAsync<TIn, TOut>(PatchEndpoint<TIn, TOut> endpoint, TIn requestObject)
             where TIn : class;
+        Task<TOut> SendAsync<TOut>(HttpRequestMessage request);
     }
 }

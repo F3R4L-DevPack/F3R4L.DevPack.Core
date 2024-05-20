@@ -6,6 +6,8 @@
     <PackageLicenseFile>Licence.txt</PackageLicenseFile>
     <Description>Basic (and hopefully simple to use) web API functionality</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.2</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

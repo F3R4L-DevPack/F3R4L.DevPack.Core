@@ -6,6 +6,15 @@
     <Copyright>2020 - White Fang Militia - Clyde en Marland / Chris Fithian-Franks</Copyright>
     <PackageLicenseFile>Licence.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageId>F3R4L.DevPack.Api.Common</PackageId>
+    <Title>The F3R4L DevPack general API accessor package</Title>
+    <Authors>Clyde en Marland</Authors>
+    <Company>F3R4L DevPack</Company>
+    <FileVersion>1.0.0</FileVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AssemblyName>F3R4L.DevPack.Api.Common</AssemblyName>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

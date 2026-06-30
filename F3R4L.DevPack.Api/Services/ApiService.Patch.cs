@@ -17,10 +17,12 @@ namespace F3R4L.DevPack.Api.Services
             }
         }
 
-        public async Task PatchAsync<TIn>(PatchEndpoint<TIn> endpoint, TIn request)
+        public async Task PatchAsync<TIn>(PatchEndpoint<TIn> endpoint, TIn request,
+            string contentType = "application/json")
         {
             var result = await _httpClient.PatchAsync(endpoint.Address,
-                new StringContent(_jsonSerialiser.Serialise<TIn>(request), Encoding.UTF8, "application/json"));
+                new StringContent(_jsonSerialiser.Serialise<TIn>(request), Encoding.UTF8, 
+                contentType));
             if (!result.IsSuccessStatusCode)
             {
                 throw CreateException(endpoint.Address, endpoint.HttpMethod.ToString(),
@@ -28,11 +30,13 @@ namespace F3R4L.DevPack.Api.Services
             }
         }
 
-        public async Task<TOut> PatchAsync<TIn, TOut>(PatchEndpoint<TIn, TOut> endpoint, TIn requestObject)
+        public async Task<TOut> PatchAsync<TIn, TOut>(PatchEndpoint<TIn, TOut> endpoint, TIn requestObject,
+            string contentType = "application/json")
             where TIn : class
         {
             var result = await _httpClient.PatchAsync(endpoint.Address,
-                new StringContent(_jsonSerialiser.Serialise<TIn>(requestObject), Encoding.UTF8, "application/json"));
+                new StringContent(_jsonSerialiser.Serialise<TIn>(requestObject), Encoding.UTF8, 
+                contentType));
             if (!result.IsSuccessStatusCode)
             {
                 throw CreateException(endpoint.Address, endpoint.HttpMethod.ToString(),

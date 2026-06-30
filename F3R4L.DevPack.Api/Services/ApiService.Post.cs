@@ -17,10 +17,11 @@ namespace F3R4L.DevPack.Api.Services
             }
         }
 
-        public async Task PostAsync<TIn>(PostEndpoint<TIn> endpoint, TIn request)
+        public async Task PostAsync<TIn>(PostEndpoint<TIn> endpoint, TIn request,
+            string contentType = "application/json")
         {
             var result = await _httpClient.PostAsync(endpoint.Address,
-                new StringContent(_jsonSerialiser.Serialise<TIn>(request), Encoding.UTF8, "application/json"));
+                new StringContent(_jsonSerialiser.Serialise<TIn>(request), Encoding.UTF8, contentType));
             if (!result.IsSuccessStatusCode)
             {
                 throw CreateException(endpoint.Address, endpoint.HttpMethod.ToString(),
@@ -28,11 +29,12 @@ namespace F3R4L.DevPack.Api.Services
             }
         }
 
-        public async Task<TOut> PostAsync<TIn, TOut>(PostEndpoint<TIn, TOut> endpoint, TIn requestObject)
+        public async Task<TOut> PostAsync<TIn, TOut>(PostEndpoint<TIn, TOut> endpoint, TIn requestObject,
+            string contentType = "application/json")
             where TIn : class
         {
             var result = await _httpClient.PostAsync(endpoint.Address,
-                new StringContent(_jsonSerialiser.Serialise<TIn>(requestObject), Encoding.UTF8, "application/json"));
+                new StringContent(_jsonSerialiser.Serialise<TIn>(requestObject), Encoding.UTF8, contentType));
             if (!result.IsSuccessStatusCode)
             {
                 throw CreateException(endpoint.Address, endpoint.HttpMethod.ToString(),

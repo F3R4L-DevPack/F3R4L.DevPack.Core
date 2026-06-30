@@ -14,12 +14,13 @@ namespace F3R4L.DevPack.Api.Services
             await _httpClient.DeleteAsync(endpoint.Address);
         }
 
-        public async Task DeleteAsync<T>(DeleteEndpoint<T> endpoint, T request)
+        public async Task DeleteAsync<T>(DeleteEndpoint<T> endpoint, T request,
+            string contentType = "application/json")
         {
             var requestMsg = new HttpRequestMessage()
             {
                 Content = new StringContent(_jsonSerialiser.Serialise(request),
-                    Encoding.UTF8, "application/json"),
+                    Encoding.UTF8, contentType),
                 Method = HttpMethod.Delete,
                 RequestUri = new Uri(endpoint.Address)
             };

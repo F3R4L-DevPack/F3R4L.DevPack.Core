@@ -19,10 +19,11 @@ namespace F3R4L.DevPack.Api.Services
             }
         }
 
-        public async Task PutAsync<TIn>(PutEndpoint<TIn> endpoint, TIn request)
+        public async Task PutAsync<TIn>(PutEndpoint<TIn> endpoint, TIn request,
+            string contentType = "application/json")
         {
             var result = await _httpClient.PutAsync(endpoint.Address,
-                new StringContent(_jsonSerialiser.Serialise<TIn>(request), Encoding.UTF8, "application/json"));
+                new StringContent(_jsonSerialiser.Serialise<TIn>(request), Encoding.UTF8, contentType));
             if (!result.IsSuccessStatusCode)
             {
                 throw CreateException(endpoint.Address, endpoint.HttpMethod.ToString(),
@@ -30,11 +31,12 @@ namespace F3R4L.DevPack.Api.Services
             }
         }
 
-        public async Task<TOut> PutAsync<TIn, TOut>(PutEndpoint<TIn, TOut> endpoint, TIn requestObject)
+        public async Task<TOut> PutAsync<TIn, TOut>(PutEndpoint<TIn, TOut> endpoint, TIn requestObject,
+            string contentType = "application/json")
             where TIn : class
         {
             var result = await _httpClient.PutAsync(endpoint.Address,
-                new StringContent(_jsonSerialiser.Serialise<TIn>(requestObject), Encoding.UTF8, "application/json"));
+                new StringContent(_jsonSerialiser.Serialise<TIn>(requestObject), Encoding.UTF8, contentType));
             if (!result.IsSuccessStatusCode)
             {
                 throw CreateException(endpoint.Address, endpoint.HttpMethod.ToString(),

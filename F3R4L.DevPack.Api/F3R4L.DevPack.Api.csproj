@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Copyright>2020 - White Fang Militia - Clyde en Marland / Chris Fithian-Franks</Copyright>
+    <Copyright>2026 - White Fang Militia - Clyde en Marland / Chris Fithian-Franks</Copyright>
     <PackageLicenseFile>Licence.txt</PackageLicenseFile>
     <Description>Basic (and hopefully simple to use) web API functionality</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.2</Version>
+    <Version>1.0.4</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 

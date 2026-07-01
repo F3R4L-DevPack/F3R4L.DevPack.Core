@@ -35,13 +35,13 @@ namespace F3R4L.DevPack.Api.Services
             _httpClient = httpClientFactory.CreateClient();
         }
 
-        public void SetAuthorisationToken(string token)
+        public void SetAuthorisationToken(string token, string tokenType = "Bearer")
         {
             if (Headers.Contains(_authorisation))
             {
                 Headers.Remove(_authorisation);
             }
-            Headers.Add(_authorisation, string.Concat("Bearer ", token));
+            Headers.Add(_authorisation, $"{tokenType} {token}");
         }
 
         public void SetHeaders(Dictionary<string, string> headers)

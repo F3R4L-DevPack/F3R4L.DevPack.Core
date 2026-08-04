@@ -9,16 +9,6 @@ namespace F3R4L.DevPack.Api.Services
 {
     public partial class ApiService
     {
-        public async Task PutAsync<TIn>(PutEndpoint<TIn> endpoint)
-        {
-            var result = await _httpClient.PutAsync(endpoint.Address, null);
-            if (!result.IsSuccessStatusCode)
-            {
-                throw CreateException(endpoint.Address, endpoint.HttpMethod.ToString(),
-                    result.StatusCode, result.ReasonPhrase ?? _noReasonPhrase);
-            }
-        }
-
         public async Task PutAsync<TIn>(PutEndpoint<TIn> endpoint, TIn request,
             string contentType = "application/json")
         {

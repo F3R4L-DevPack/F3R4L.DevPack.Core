@@ -32,7 +32,7 @@ namespace F3R4L.DevPack.Api.Services
         Task PutAsync<TIn>(PutEndpoint<TIn> endpoint);
         Task PutAsync<TIn>(PutEndpoint<TIn> endpoint, TIn request, string contentType = "application/json");
         Task<TOut> SendAsync<TOut>(HttpRequestMessage request);
-        void SetAuthorisationToken(string token);
+        void SetAuthorisationToken(string token, string tokenType = "Bearer");
         void SetHeaders(Dictionary<string, string> headers);
     }
 }

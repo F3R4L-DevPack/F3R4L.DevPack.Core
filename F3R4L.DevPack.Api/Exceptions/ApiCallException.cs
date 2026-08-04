@@ -16,8 +16,7 @@ namespace F3R4L.DevPack.Api.Exceptions
         /// <param name="statusCode"></param>
         /// <param name="message"></param>
         public ApiCallException(string uri, string httpMethod, HttpStatusCode statusCode, string message)
-            : base(string.Format(_messageFormat, Enum.GetName(typeof(HttpMethod), httpMethod), uri,
-                statusCode.ToString()), new Exception(message))
+            : base(string.Format(_messageFormat, httpMethod, uri, ((int)statusCode).ToString()), new Exception(message))
         {
             Uri = uri;
             HttpMethod = httpMethod;

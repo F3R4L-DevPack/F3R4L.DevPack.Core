@@ -10,7 +10,7 @@ namespace F3R4L.DevPack.Api.Services
 {
     public partial class ApiService
     {
-        public async Task<RequestOnlyAuditContainer<TIn>> PostAsync<TIn>(AuditablePatchEndpoint<TIn> endpoint, TIn request,
+        public async Task<RequestOnlyAuditContainer<TIn>> PostAsync<TIn>(AuditablePostEndpoint<TIn> endpoint, TIn request,
             string contentType = "application/json")
         {
             var result = new RequestOnlyAuditContainer<TIn>()
@@ -45,7 +45,7 @@ namespace F3R4L.DevPack.Api.Services
             return result;
         }
 
-        public async Task<AuditContainer<TIn, TOut>> PostAsync<TIn, TOut>(AuditablePatchEndpoint<TIn, TOut> endpoint, TIn requestObject,
+        public async Task<AuditContainer<TIn, TOut>> PostAsync<TIn, TOut>(AuditablePostEndpoint<TIn, TOut> endpoint, TIn requestObject,
             string contentType = "application/json")
             where TIn : class
         {

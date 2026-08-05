@@ -13,5 +13,5 @@ Each endpoint type has sub-variants that may be used, dependant on the number of
 >public class TestPostEndpoint : PostEndpoint<TestRequest, TestResponse>
 >{
 >>   public TestPostEndpoint(string hostName, string endpoint)
->>     &nbsp;: base(hostName, endpoint){}
->}
+>> &nbsp;: base(hostName, endpoint){}
+> }

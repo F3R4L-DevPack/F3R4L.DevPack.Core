@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F3R4L.DevPack.Api", "F3R4L.DevPack.Api\F3R4L.DevPack.Api.csproj", "{1928FC18-04BE-4DEE-AA75-997D545E5961}"
 EndProject
@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B20EE65D-9C68-417E-862E-595D94CD304C}"
 	ProjectSection(SolutionItems) = preProject
 		Licence.txt = Licence.txt
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F3R4L.DevPack.SSO.Ninject", "F3R4L.DevPack.SSO.Ninject\F3R4L.DevPack.SSO.Ninject.csproj", "{1B1E5F78-B345-4FED-A708-9F08E0BC5F7C}"

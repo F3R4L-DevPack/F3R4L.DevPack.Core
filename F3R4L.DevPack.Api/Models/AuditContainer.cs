@@ -25,6 +25,7 @@ namespace F3R4L.DevPack.Api.Models
         public ObjectContainer<TOut> Response { get; set; }
     }
 
+    [Obsolete("This class is deprecated. Use AuditContainer<TIn, TOut> instead.")]
     public class AuditContainer<TIn1, TIn2, TOut> : AuditContainer
     {
         public ObjectContainer<TIn1> Request1 { get; set; }

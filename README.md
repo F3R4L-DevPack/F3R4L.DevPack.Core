@@ -13,6 +13,7 @@ Each endpoint type has sub-variants that may be used, dependant on the number of
 
 <details>
 <summary>Example</summary>
+    
 ```
 public class TestPostEndpoint : PostEndpoint<TestRequest, TestResponse>
 {
@@ -20,6 +21,7 @@ public class TestPostEndpoint : PostEndpoint<TestRequest, TestResponse>
     : base(hostName, endpoint) { }
 }
 ```
+
 </details>
 
 ##Enhanced
@@ -35,6 +37,7 @@ Again, each endpoint type has sub-variants that may be used, dependant on the nu
 
 <details>
 <summary>Example</summary>
+    
 ```
 public class TestPostEndpoint : AuditablePostEndpoint<TestRequest, TestResponse>
 {
@@ -42,6 +45,7 @@ public class TestPostEndpoint : AuditablePostEndpoint<TestRequest, TestResponse>
     : base(hostName, endpoint) { }
 }
 ```
+
 </details>
 
 ##Difference
@@ -50,7 +54,8 @@ The enhanced system will always return an "AuditContainer":
 
 <details>
 <summary>AuditContainer</summary>
-## AuditContainer
+### AuditContainer
+    
 ```
     public class AuditContainer
     {
@@ -60,6 +65,7 @@ The enhanced system will always return an "AuditContainer":
         public string ResponseMessage { get; set; }
     }
 ```
+
 - Url: The full URL of the request made
 - StatusCode: The HttpStatusCode returned by the server
 - ErrorMessage: If the request failed, this will contain the error message returned by the server
@@ -67,7 +73,8 @@ The enhanced system will always return an "AuditContainer":
 </details>
 <details>
 <summary>AuditContainer<T></summary>
-## AuditContainer<T>
+### AuditContainer<T>
+    
 ```
     public class AuditContainer<T>
     {
@@ -80,6 +87,7 @@ The enhanced system will always return an "AuditContainer":
         public ObjectContainer<T> Response { get; set; }
     }
 ```
+
 - Url: The full URL of the request made
 - StatusCode: The HttpStatusCode returned by the server
 - ErrorMessage: If the request failed, this will contain the error message returned by the server
@@ -91,7 +99,8 @@ Only one of the Request or Response properties will be populated, depending on t
 </details>
 <details>
 <summary>AuditContainer<TIn, TOut></summary>
-## AuditContainer<TIn, TOut>
+### AuditContainer<TIn, TOut>
+    
 ```
     public class AuditContainer<TIn, TOut>
     {
@@ -104,6 +113,7 @@ Only one of the Request or Response properties will be populated, depending on t
         public ObjectContainer<TOut> Response { get; set; }
     }
 ```
+
 - Url: The full URL of the request made
 - StatusCode: The HttpStatusCode returned by the server
 - ErrorMessage: If the request failed, this will contain the error message returned by the server

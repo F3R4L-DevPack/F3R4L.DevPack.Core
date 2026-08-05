@@ -10,8 +10,8 @@ The first is the original, more simple manner. Create a new class that inherits 
 
 Each endpoint type has sub-variants that may be used, dependant on the number of request and / or response types. An example endpoint for a POST with a user defined request type of "TestRequest" & a response type of "TestResponse" would be:
 
- public class TestPostEndpoint : PostEndpoint<TestRequest, TestResponse>
- {
-   public TestPostEndpoint(string hostName, string endpoint)
-     : base(hostName, endpoint){}
- }
+>public class TestPostEndpoint : PostEndpoint<TestRequest, TestResponse>
+>{
+>>   public TestPostEndpoint(string hostName, string endpoint)
+>>>     : base(hostName, endpoint){}
+>}

@@ -6,8 +6,16 @@
     <PackageLicenseFile>Licence.txt</PackageLicenseFile>
     <Description>Basic (and hopefully simple to use) web API functionality</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Clyde en Marland</Authors>
+    <Company>F3R4L DevPack</Company>
+    <Title>F3R4L Rest API</Title>
+    <PackageProjectUrl>https://github.com/F3R4L-DevPack/F3R4L.DevPack.Core</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/F3R4L-DevPack/F3R4L.DevPack.Core</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>REST, API</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +23,10 @@
     <None Include="..\Licence.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

@@ -50,13 +50,14 @@ public class TestPostEndpoint : AuditablePostEndpoint<TestRequest, TestResponse>
 
 </details>
 
-##Difference
+##Differences
+
 The simplified system attempts to return an object of type "TestResponse": if the response form the server cannot be deserialised to the target type, an "ApiCallException" is throw that contains the details of the problem.
 The enhanced system will always return an "AuditContainer":
 
 <details>
-<summary>AuditContainer</summary>
-### AuditContainer
+    
+<summary><bold>AuditContainer</bold></summary>
     
 ```
     public class AuditContainer
@@ -73,9 +74,10 @@ The enhanced system will always return an "AuditContainer":
 - ErrorMessage: If the request failed, this will contain the error message returned by the server
 - ResponseMessage: If the request failed, this will contain the response message returned by the server
 </details>
+
 <details>
-<summary>AuditContainer<T></summary>
-### AuditContainer<T>
+    
+<summary><bold>AuditContainer<T></bold></summary>
     
 ```
     public class AuditContainer<T>
@@ -99,9 +101,10 @@ The enhanced system will always return an "AuditContainer":
 
 Only one of the Request or Response properties will be populated, depending on the type of endpoint used.
 </details>
+
 <details>
-<summary>AuditContainer<TIn, TOut></summary>
-### AuditContainer<TIn, TOut>
+    
+<summary><bold>AuditContainer<TIn, TOut></bold></summary>
     
 ```
     public class AuditContainer<TIn, TOut>

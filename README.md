@@ -170,7 +170,7 @@ Add a private field to your class to contain the injected IApiService, which can
             var endpoint = new TestGetEndpoint(_baseUrl, "/get");
             var response = await _objectUnderTest.GetAsync(endpoint);
 
-'''
+```
 
 When "TestGetEndpoint" derives from "GetEndpoint", the variable response will be of type "T" that you defined in the endpoint class. 
 If "TestGetEndpoint" derives from "AuditableGetEndpoint", the variable response will be of type "AuditContainer<T>" that you defined in the endpoint class.

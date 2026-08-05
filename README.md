@@ -126,3 +126,51 @@ Only one of the Request or Response properties will be populated, depending on t
 - Request: An ObjectContainer containing the request object and the actual JSON string that was sent
 - Response: An ObjectContainer containing the response object and the actual JSON string that was received
 </details>
+
+## Dependency Injection
+
+To your project, add a reference to the F3R4L.DevPack.Api package. Then, in your injection container, add the following using line:
+
+```
+
+using F3R4L.DevPack.Api.DependencyInjection;
+
+```
+
+Then, add the following line to the code:
+
+```
+
+services.AddApiBindings();
+
+```
+
+## Usage
+
+To your class, add the following using line:
+
+```
+
+using F3R4L.DevPack.Api.Services;
+
+```
+
+Then, add the following to your class constructor:
+
+```
+
+IApiService apiService
+
+```
+
+Add a private field to your class to contain the injected IApiService, which can be used to make the API calls. For example:
+
+```
+
+            var endpoint = new TestGetEndpoint(_baseUrl, "/get");
+            var response = await _objectUnderTest.GetAsync(endpoint);
+
+'''
+
+When "TestGetEndpoint" derives from "GetEndpoint", the variable response will be of type "T" that you defined in the endpoint class. 
+If "TestGetEndpoint" derives from "AuditableGetEndpoint", the variable response will be of type "AuditContainer<T>" that you defined in the endpoint class.

@@ -77,7 +77,7 @@ The enhanced system will always return an "AuditContainer":
 
 <details>
     
-<summary><bold>AuditContainer<T></bold></summary>
+<summary><bold><pre>AuditContainer<T></pre></bold></summary>
     
 ```
     public class AuditContainer<T>
@@ -104,7 +104,7 @@ Only one of the Request or Response properties will be populated, depending on t
 
 <details>
     
-<summary><bold>AuditContainer<TIn, TOut></bold></summary>
+<summary><bold><pre>AuditContainer<TIn, TOut></pre></bold></summary>
     
 ```
     public class AuditContainer<TIn, TOut>

@@ -50,7 +50,7 @@ public class TestPostEndpoint : AuditablePostEndpoint<TestRequest, TestResponse>
 
 </details>
 
-##Differences
+## Differences
 
 The simplified system attempts to return an object of type "TestResponse": if the response form the server cannot be deserialised to the target type, an "ApiCallException" is throw that contains the details of the problem.
 The enhanced system will always return an "AuditContainer":

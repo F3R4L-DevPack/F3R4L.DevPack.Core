@@ -10,8 +10,9 @@ namespace F3R4L.DevPack.Api.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddF3R4LApiBindings(this IServiceCollection serviceCollection)
+        public static void AddApiBindings(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddHttpClient();
             serviceCollection.AddSingleton(typeof(IHttpContextAccessor), typeof(HttpContextAccessor));
             serviceCollection.AddScoped(typeof(IHttpClientGenerationFactory), typeof(HttpClientGenerationFactory));
             serviceCollection.AddScoped(typeof(IOptionsMonitor<HttpClientFactoryOptions>), typeof(OptionsMonitor<HttpClientFactoryOptions>));

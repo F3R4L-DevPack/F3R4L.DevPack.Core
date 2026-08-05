@@ -22,7 +22,7 @@ namespace F3R4L.DevPack.Api.Services
         public async Task<TOut> GetAsync<TIn, TOut>(GetEndpoint<TIn, TOut> endpoint, TIn request)
             where TIn : IConvertible
         {
-            var result = await _httpClient.GetAsync(string.Format(endpoint.Address, request.ToString()));
+            var result = await _httpClient.GetAsync(string.Concat(endpoint.Address, "?", request.ToQueryString()));
             if (!result.IsSuccessStatusCode)
             {
                 throw CreateException(string.Format(endpoint.Address, request.ToString()), endpoint.HttpMethod.ToString(),

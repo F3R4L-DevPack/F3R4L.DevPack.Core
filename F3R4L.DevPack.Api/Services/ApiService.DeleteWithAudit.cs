@@ -35,10 +35,10 @@ namespace F3R4L.DevPack.Api.Services
             return result;
         }
 
-        public async Task<RequestOnlyAuditContainer<T>> DeleteAsync<T>(AuditableDeleteEndpoint<T> endpoint, T request,
+        public async Task<AuditContainer<T>> DeleteAsync<T>(AuditableDeleteEndpoint<T> endpoint, T request,
             string contentType = "application/json")
         {
-            var result = new RequestOnlyAuditContainer<T>()
+            var result = new AuditContainer<T>()
             {
                 Url = endpoint.Address,
                 Request = new ObjectContainer<T>()

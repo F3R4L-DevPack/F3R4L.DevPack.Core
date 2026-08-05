@@ -10,9 +10,9 @@ namespace F3R4L.DevPack.Api.Services
 {
     public partial class ApiService
     {
-        public async Task<ResponseOnlyAuditContainer<TOut>> GetAsync<TOut>(AuditableGetEndpoint<TOut> endpoint)
+        public async Task<AuditContainer<TOut>> GetAsync<TOut>(AuditableGetEndpoint<TOut> endpoint)
         {
-            var result = new ResponseOnlyAuditContainer<TOut>()
+            var result = new AuditContainer<TOut>()
             {
                 Url = endpoint.Address
             };
@@ -106,12 +106,12 @@ namespace F3R4L.DevPack.Api.Services
             return result;
         }
 
-        public async Task<DualRequestAuditContainer<TIn1, TIn2, TOut>> GetAsync<TIn1, TIn2, TOut>(AuditableGetEndpoint<TIn1, TIn2, TOut> endpoint, TIn1 request, Dictionary<string, object> requestParameters)
+        public async Task<AuditContainer<TIn1, TIn2, TOut>> GetAsync<TIn1, TIn2, TOut>(AuditableGetEndpoint<TIn1, TIn2, TOut> endpoint, TIn1 request, Dictionary<string, object> requestParameters)
             where TIn1 : IConvertible
             where TIn2 : IDictionary<string, object>
         {
             var suffix = requestParameters.ToUrlParameterString();
-            var result = new DualRequestAuditContainer<TIn1, TIn2, TOut>()
+            var result = new AuditContainer<TIn1, TIn2, TOut>()
             {
                 Url = string.Concat(string.Format(endpoint.Address, request.ToString()), "?", suffix)
             };

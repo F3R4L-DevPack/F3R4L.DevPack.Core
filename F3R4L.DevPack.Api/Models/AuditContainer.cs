@@ -13,12 +13,9 @@ namespace F3R4L.DevPack.Api.Models
         public string ResponseMessage { get; set; }
     }
 
-    public class RequestOnlyAuditContainer<T> : AuditContainer
+    public class AuditContainer<T> : AuditContainer
     {
         public ObjectContainer<T> Request { get; set; }
-    }
-    public class ResponseOnlyAuditContainer<T> : AuditContainer
-    {
         public ObjectContainer<T> Response { get; set; }
     }
 
@@ -28,7 +25,7 @@ namespace F3R4L.DevPack.Api.Models
         public ObjectContainer<TOut> Response { get; set; }
     }
 
-    public class DualRequestAuditContainer<TIn1, TIn2, TOut> : AuditContainer
+    public class AuditContainer<TIn1, TIn2, TOut> : AuditContainer
     {
         public ObjectContainer<TIn1> Request1 { get; set; }
         public ObjectContainer<TIn2> Request2 { get; set; }

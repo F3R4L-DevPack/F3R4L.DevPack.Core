@@ -10,10 +10,10 @@ namespace F3R4L.DevPack.Api.Services
 {
     public partial class ApiService
     {
-        public async Task<RequestOnlyAuditContainer<TIn>> PostAsync<TIn>(AuditablePostEndpoint<TIn> endpoint, TIn request,
+        public async Task<AuditContainer<TIn>> PostAsync<TIn>(AuditablePostEndpoint<TIn> endpoint, TIn request,
             string contentType = "application/json")
         {
-            var result = new RequestOnlyAuditContainer<TIn>()
+            var result = new AuditContainer<TIn>()
             {
                 Url = endpoint.Address
             };

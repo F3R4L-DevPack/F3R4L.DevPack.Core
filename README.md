@@ -104,7 +104,7 @@ Only one of the Request or Response properties will be populated, depending on t
 
 <details>
     
-<summary><bold><pre>AuditContainer&lt;TIn, TOut&gt;</pre></bold></summary>
+<summary><bold>AuditContainer&lt;TIn, TOut&gt;</bold></summary>
     
 ```
     public class AuditContainer<TIn, TOut>

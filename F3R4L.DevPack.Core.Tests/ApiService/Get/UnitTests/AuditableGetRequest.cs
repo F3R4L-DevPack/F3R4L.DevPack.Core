@@ -26,7 +26,7 @@ namespace F3R4L.DevPack.Api.Tests.ApiService.Get.UnitTests
             var response = await _objectUnderTest.GetAsync(endpoint);
 
             //  Assert
-            response.GetType().ShouldBe(typeof(ResponseOnlyAuditContainer<MockServerResponse>));
+            response.GetType().ShouldBe(typeof(AuditContainer<MockServerResponse>));
             response.Url.ShouldBe("https://localhost:5001/get");
             response.StatusCode.ShouldBe(System.Net.HttpStatusCode.OK);
             response.Response.Json.ShouldBe("{\"message\":\"Success\"}");
@@ -49,7 +49,7 @@ namespace F3R4L.DevPack.Api.Tests.ApiService.Get.UnitTests
             var response = await _objectUnderTest.GetAsync(endpoint);
 
             //  Assert
-            response.GetType().ShouldBe(typeof(ResponseOnlyAuditContainer<MockServerResponse>));
+            response.GetType().ShouldBe(typeof(AuditContainer<MockServerResponse>));
             response.Url.ShouldBe("https://localhost:5001/get");
             response.StatusCode.ShouldBe(System.Net.HttpStatusCode.InternalServerError);
             response.Response.ShouldBeNull();
@@ -71,7 +71,7 @@ namespace F3R4L.DevPack.Api.Tests.ApiService.Get.UnitTests
             var response = await _objectUnderTest.GetAsync(endpoint);
 
             //  Assert
-            response.GetType().ShouldBe(typeof(ResponseOnlyAuditContainer<MockServerResponse>));
+            response.GetType().ShouldBe(typeof(AuditContainer<MockServerResponse>));
             response.Url.ShouldBe("https://localhost:5001/get");
             response.StatusCode.ShouldBe(System.Net.HttpStatusCode.NotFound);
             response.Response.ShouldBeNull();

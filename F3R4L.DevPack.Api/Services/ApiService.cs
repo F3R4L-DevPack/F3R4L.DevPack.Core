@@ -51,7 +51,7 @@ namespace F3R4L.DevPack.Api.Services
                 Headers.Add(header.Key, header.Value));
         }
 
-        public ApiCallException CreateException(string uri, string method, HttpStatusCode statusCode, string reason)
+        internal ApiCallException CreateException(string uri, string method, HttpStatusCode statusCode, string reason)
         {
             return new ApiCallException(uri, method, statusCode, reason);
         }
